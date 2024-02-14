@@ -19,6 +19,25 @@ a:active {
     color: yellow;
 }
 
+a:visited {
+    text-decoration: none;
+    color: gray;
+}
+
+/* Styles the link */
+a {
+    border: solid 1px red;
+    border-radius: 10px;
+    padding: 20px; 
+    display: block;
+    width: 100px;
+    text-align: center;
+    margin: auto;
+
+
+
+}
+
 /* Creates a hovering effect on the title */
 /* It didn't work :( */
 h1:hover {
