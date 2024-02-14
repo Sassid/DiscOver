@@ -21,22 +21,25 @@ a:active {
 
 a:visited {
     text-decoration: none;
-    color: gray;
+    /* color: gray; */
 }
 
 /* Styles the link */
 a {
-    border: solid 1px red;
+    border: dashed 3px red;
     border-radius: 10px;
     padding: 20px; 
     display: block;
     width: 100px;
     text-align: center;
     margin: auto;
-
-
-
+    background-color: pink;
 }
+
+/* .wavy {
+    text-transform: capitalize;
+    text-decoration-style: wavy;
+} */
 
 /* Creates a hovering effect on the title */
 /* It didn't work :( */
