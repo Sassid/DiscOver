@@ -1,0 +1,26 @@
+/* Creates a heading with a shadow */
+h1 {
+    color: red;
+    text-shadow: 20px 20px blue;
+    padding: 20px;
+    margin: 50px;
+    text-align: center;
+    border: solid black;
+    background-color: black;
+}
+
+/* Creates a hypertext link with interactive effect */
+a:hover {
+    font-size: 40px;
+    color: green;
+    text-decoration: none;
+}
+a:active {
+    color: yellow;
+}
+
+/* Creates a hovering effect on the title */
+/* It didn't work :( */
+h1:hover {
+    font-weight: bold;
+}
