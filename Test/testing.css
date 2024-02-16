@@ -1,3 +1,8 @@
+main {
+    background-color: rgb(202, 198, 198);
+}
+
+
 /* Creates a heading with a shadow */
 h1 {
     color: red;
@@ -9,24 +14,9 @@ h1 {
     background-color: black;
 }
 
-/* Creates a hypertext link with interactive effect */
-a:hover {
-    font-size: 40px;
-    color: green;
-    text-decoration: wavy;
-    text-transform: capitalize;
-}
-a:active {
-    color: yellow;
-} 
-
-a:visited {
-    text-decoration: none; 
-    color: gray;
-} 
 
 /* Styles the link */
- a {
+a {
     border: dashed 3px red;
     border-radius: 10px;
     padding: 20px; 
@@ -35,13 +25,33 @@ a:visited {
     text-align: center;
     margin: auto;
     background-color: pink;
- } 
+} 
+
+/* Creates a hypertext link with interactive effect */
+a:visited {
+    text-decoration: none; 
+    color: gray;
+} 
+
+a:hover {
+    font-size: 40px;
+    color: green;
+    text-decoration: wavy;
+    text-transform: capitalize;
+}
+
+a:active {
+    color: yellow;
+} 
 
 
 /* Creates a hovering effect on the title */
 /* It didn't work :( */
 h1:hover {
     font-weight: bold;
+    background-color: gray;
+    color: pink;
+    text-shadow: rgb(73, 176, 245);
 }
 
 table, th, td  {
@@ -54,6 +64,18 @@ tr:nth-child(even) {
     background-color: rgb(255, 251, 32);
 }
 
+tr:nth-child(6) {
+    background-color: blue;
+    color: white;
+}
+
 ul {
-    list-style: circle ;
+    list-style: square ;
+    color: red;
+}
+
+ol {
+    color: green;
+    text-transform: capitalize;
+    list-style-type : upper-alpha
 }
