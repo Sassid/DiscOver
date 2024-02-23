@@ -1,5 +1,6 @@
 main {
     background-color: rgb(202, 198, 198);
+    border-radius: 10px;
 }
 
 
@@ -11,6 +12,7 @@ h1 {
     margin: 50px;
     text-align: center;
     border: solid black;
+    border-radius: 20px;
     background-color: black;
 }
 
@@ -46,7 +48,6 @@ a:active {
 
 
 /* Creates a hovering effect on the title */
-/* It didn't work :( */
 h1:hover {
     font-weight: bold;
     background-color: gray;
@@ -78,4 +79,12 @@ ol {
     color: green;
     text-transform: capitalize;
     list-style-type : upper-alpha
+}
+
+.spaced {
+    padding-left: 10px;
+}
+
+.moving {
+    transform: translate(px);
 }
