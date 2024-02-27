@@ -85,6 +85,28 @@ ol {
     padding-left: 10px;
 }
 
-.moving {
-    transform: translate(px);
+.moving:hover {
+    transform: translate(20px);
+}
+
+p.anime { 
+border: solid 5px red;
+width: 200px;
+text-align: center;
+margin: auto;
+width: 30%;
+background-color: yellow;
+transition: width 2s, background-color 2s;
+}
+
+p.anime:hover {
+width: 100%;
+background-color: green;
+}
+
+.bigger {
+    transition: transform 2s;
+}
+.bigger:hover {
+    transform: scale(1.5) ;
 }
