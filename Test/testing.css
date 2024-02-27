@@ -14,6 +14,12 @@ h1 {
     border: solid black;
     border-radius: 20px;
     background-color: black;
+    transition: color 2s, text-shadow 2s;
+}
+
+h1:hover {
+    color: blue;
+    text-shadow: red;
 }
 
 
@@ -48,12 +54,12 @@ a:active {
 
 
 /* Creates a hovering effect on the title */
-h1:hover {
+/* h1:hover {
     font-weight: bold;
     background-color: gray;
     color: pink;
     text-shadow: rgb(73, 176, 245);
-}
+} */
 
 table, th, td  {
     border: 2px dotted rgb(218, 4, 238);
