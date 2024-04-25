@@ -34,9 +34,11 @@
   scroll-snap-align: start; /*defines the start of the next image as the snap point when scrolling*/
   /* object-fit: cover;
     object-position: top center; */
+  animation: autoSlide 5s linear infinite alternate;
+
 }
 
-.slider img:nth-child(1) {
+/* .slider img:nth-child(1) {
   animation: autoSlide 9s linear infinite alternate;
 }
 
@@ -46,7 +48,7 @@
 
 .slider img:nth-child(3) {
   animation: autoSlide 9s linear 9s infinite alternate;
-}
+} */
 
 .slider-nav {
   /* border: solid brown; */
