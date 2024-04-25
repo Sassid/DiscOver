@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.carousel-container {
+    border: solid red;
+    padding: 2rem;
+}
+
+.slider-wrapper {
+    border: solid blue;
+    position: relative;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.slider {
+    border: solid green;
+    display: flex;
+    aspect-ratio: 16 / 9;
+    overflow-x: hidden;
+    
+
+}
