@@ -1,0 +1,27 @@
+/* *RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* *GENERAL */
+a {
+  text-decoration: none;
+  color: rgb(79, 77, 77);
+}
+
+/* *HEADER */
+header {
+    height: 10vh;
+    background-color: rgb(165, 250, 165);
+    display: flex;
+    justify-content: space-between;
+}
+
+header img {
+    width: 50px;
+    height: 50px;
+}
+
+/* *MEDIA QUERIES */
