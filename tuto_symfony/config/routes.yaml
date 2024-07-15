@@ -1,0 +1,11 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+
+# ! Old way to create a route:
+# home:
+#     path: /
+#     controller: App\Controller\HomeController::index
