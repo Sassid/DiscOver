@@ -1,0 +1,7 @@
+<header>
+	<nav class="nav navbar-expand-lg bg-primary" data-bs-theme="dark">
+		<a class="nav-link" href={{path('home')}}>Recettes Facettes</a>
+		<a class="nav-link {{app.current_route == 'home' ? 'active' : '' }}" href={{path("home")}}>Accueil</a>
+		<a class="nav-link {{app.current_route starts with 'recipe_' ? 'active' : ''}}" href={{path("recipe_index")}}>Recettes</a>
+	</nav>
+</header>

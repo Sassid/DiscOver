@@ -1,7 +1,15 @@
 {% extends "base.html.twig" %}
 
-{% block title %}All my Recipes{% endblock %}
+{% block title %}All my Recipes
+{% endblock %}
 
 {% block body %}
-	<h1>Enter my kitchen and let's cook together !</h1>
+	<h1>Cuisinons Ensemble !</h1>
+	<ul>
+		{% for recipe in recipes %}
+			<li>
+				<a href={{path('recipe_show', {id: recipe.id, slug: recipe.slug} )}}>{{recipe.title}}</a>
+			</li>
+		{% endfor %}
+	</ul>
 {% endblock %}

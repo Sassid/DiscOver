@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{slug}}
+{% endblock %}
+
+{% block body %}
+	<h1>Recette n°
+		{{id}}:
+		<span>{{slug|upper}}</span>
+	</h1>
+{% endblock %}

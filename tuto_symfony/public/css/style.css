@@ -1,0 +1,32 @@
+/* *RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* *GENERAL */
+body {
+  background-color: snow;
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: blueviolet;
+}
+
+/* *HEADER */
+.nav-link {
+  color: snow;
+}
+
+.nav-link:hover {
+  color: black;
+}
