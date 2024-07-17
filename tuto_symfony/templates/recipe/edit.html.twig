@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Edit
+	{{recipe.title}}
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1>Edition Recette n°
+			{{recipe.id}}:
+			<span>{{recipe.title|upper}}</span>
+		</h1>
+        {{form(form)}}
+	</main>
+{% endblock %}

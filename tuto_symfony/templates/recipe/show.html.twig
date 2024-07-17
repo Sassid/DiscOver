@@ -1,12 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-	{{slug}}
+	{{recipe.title}}
 {% endblock %}
 
 {% block body %}
 	<h1>Recette n°
-		{{id}}:
-		<span>{{slug|upper}}</span>
+		{{recipe.id}}:
+		<span>{{recipe.title|upper}}</span>
 	</h1>
+	<h2>Temps de prépartion: {{recipe.duration}} minutes</h2>
+	<p>{{recipe.content|nl2br}}</p>
 {% endblock %}
