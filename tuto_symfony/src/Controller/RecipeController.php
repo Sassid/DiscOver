@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Recipe;
 use App\Form\RecipeType;
 use App\Repository\RecipeRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class RecipeController extends AbstractController
 {
@@ -67,6 +69,26 @@ class RecipeController extends AbstractController
         return $this->render('recipe/edit.html.twig', [
             'recipe' => $recipe,
             'form' => $form
+        ]);
+    }
+
+    #[Route('/recettes/create', name: 'recipe_create')]
+    public function create(Request $request, EntityManagerInterface $em, SluggerInterface $slugger)
+    {
+        $recipe = new Recipe();
+        $form = $this->createForm(RecipeType::class, $recipe);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $recipe->setCreatedAt(new DateTimeImmutable());
+            $slug = $slugger->slug($recipe->getTitle())->lower();
+            dd($slug);
+            $em->persist($recipe);
+            $em->flush();
+            $this->addFlash('success', 'La recette a bien été créee');
+            return $this->redirectToRoute('recipe_index');
+        }
+        return $this->render('recipe/create.html.twig', [
+            'form' => $form,
         ]);
     }
 }
