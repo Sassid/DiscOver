@@ -31,7 +31,7 @@ class RecipeController extends AbstractController
         ]);
     }
 
-    #[Route('/recettes/{slug}-{id}', name: 'recipe_show', requirements: ['id' => '\d+', 'slug' => '[a-z0-9-]+'])]
+    #[Route('/recettes/{slug}-{id}', name: 'recipe_show', requirements: ['id' => '\d+', 'slug' => '[a-z0-9-]+'], methods:['GET'])]
     public function show(Request $request, string $slug, int $id, RecipeRepository $repository): Response
     {
         $recipe = $repository->find($id);
@@ -55,7 +55,7 @@ class RecipeController extends AbstractController
 
     #[Route('/recettes/{id}/edit', name: 'recipe_edit', requirements: [
         'id' => Requirement::DIGITS
-    ])]
+    ], methods:['GET', 'POST'])]
     public function edit(Recipe $recipe, Request $request, EntityManagerInterface $em)
     {
         $form = $this->createForm(RecipeType::class, $recipe);
@@ -79,16 +79,26 @@ class RecipeController extends AbstractController
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $recipe->setCreatedAt(new DateTimeImmutable());
+            // $recipe->setCreatedAt(new DateTimeImmutable());
             $slug = $slugger->slug($recipe->getTitle())->lower();
-            dd($slug);
+            $recipe->setSlug($slug);
             $em->persist($recipe);
             $em->flush();
-            $this->addFlash('success', 'La recette a bien été créee');
+            $this->addFlash('success', 'La recette a bien été créée');
             return $this->redirectToRoute('recipe_index');
         }
         return $this->render('recipe/create.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/recettes/{id}/edit', name:'recipe_delete', methods:['DELETE'])]
+    public function delete(Recipe $recipe, EntityManagerInterface $em)
+    {
+        $em->remove($recipe);
+        $em->flush();
+        $this->addFlash('success', 'La recette a bien été supprimée');
+
+        return $this->redirectToRoute('recipe_index');
     }
 }
