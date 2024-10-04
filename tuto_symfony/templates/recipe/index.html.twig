@@ -24,7 +24,7 @@
 							<div class="d-flex gap-2">
 								<a class="btn btn-warning" href={{path('recipe_edit', {id: recipe.id} )}}>Editer</a>
 								<form action={{path('recipe_delete', {id: recipe.id} )}} method="post">
-								<input type="hidden" name="_method" value="DELETE">
+									<input type="hidden" name="_method" value="DELETE">
 									<button type="submit" class="btn btn-danger">Supprimer</button>
 								</form>
 							</div>
