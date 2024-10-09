@@ -19,10 +19,10 @@
 // echo $eleve[2][2];
 
 $eleve = [
-    'name' => 'Doug',
+    'name'  => 'Doug',
     'alias' => 'Woof',
-    'job' => 'tank',
-    'score' => [10, 20, 97] 
+    'job'   => 'tank',
+    'score' => [10, 20, 97]
 ];
 
 echo "Name: {$eleve['name']} \n";
