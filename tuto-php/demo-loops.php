@@ -137,6 +137,7 @@ while (true) {
 }
 
 print_r($creneaux);
+var_dump($creneaux);
 
 
 $arrivee = (int)readline("à quelle heure voulez-vous venir ? : ");
@@ -162,3 +163,4 @@ foreach ($creneaux as $key => $creneau) {
     }
     echo "$creneau[0]h à $creneau[1]h ";
 }
+ 
