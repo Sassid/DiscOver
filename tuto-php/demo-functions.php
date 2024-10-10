@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /* $variable = readline();
 var_dump($variable); */
 
@@ -75,10 +77,10 @@ $score2 = [10, 20, 13];
 
 //! Inside a function :
 
-// function calculateAverage($array) {
-//     $average = round(array_sum($array) / count($array), 1);
-//     echo "the average is $average \n";
-// }
+function calculateAverage($array) {
+    $average = round(array_sum($array) / count($array), 1);
+    echo "the average is $average \n";
+}
 
 // calculateAverage($score);
 // calculateAverage($score2);
@@ -112,8 +114,8 @@ function filterPhrases($phrase, &$count)
 
 //! With a prompt :
 
-$userInput = readline("taper votre texte : ");
-var_dump($userInput);
+// $userInput = readline("taper votre texte : ");
+// var_dump($userInput);
 
 // filterPhrases($userInput, $count);
 // echo "\nnous avons filtré $count insultes \n";
@@ -121,13 +123,14 @@ var_dump($userInput);
 //! With an array :
 
 
-function newFilterPhrase($phrase, &$totalCount)
+$forbiddenWords = ['putain', 'con', 'merde'];
+
+function newFilterPhrase($phrase, &$totalCount, $forbiddenWords)
 {
-   $forbiddenWords = ['putain', 'con', 'merde'];
    foreach ($forbiddenWords as $forbiddenWord) {
-      $wordReplacement = str_repeat('*', strlen($forbiddenWord));
+      $croppedWord = substr($forbiddenWord, 0, 1) . str_repeat('*', strlen($forbiddenWord) - 1);
       $count = 0;
-      $phrase = str_replace($forbiddenWord, $wordReplacement, $phrase, $count);
+      $phrase = str_replace($forbiddenWord, $croppedWord, $phrase, $count);
       $totalCount += $count;
    }
    echo "$phrase \n";
@@ -135,5 +138,120 @@ function newFilterPhrase($phrase, &$totalCount)
 };
 
 $totalCount = 0;
-newFilterPhrase($userInput, $totalCount);
-echo "Nous avons filtré $totalCount insultes.";
+// newFilterPhrase($userInput, $totalCount, $forbiddenWords);
+// echo "Nous avons filtré $totalCount insultes. \n";
+
+// --------------------------------------------------------
+
+function moderatePhrase($phrase, $forbiddenWords, &$count)
+{
+   foreach ($forbiddenWords as $forbiddenWord) {
+      if (str_contains($phrase, $forbiddenWord)) {
+         $message = "phrase supprimée car grossière";
+         $moderatedPhrase = $message;
+         $count++;
+      }
+   }
+   echo "$moderatedPhrase \n";
+   return $count;
+}
+
+// moderatePhrase($userInput, $forbiddenWords, $count);
+// echo "Nous avons filtré $totalCount insultes. \n";
+
+// ----------------------------------------------------------
+
+function greet($name = null)
+{
+   if ($name === null) {
+      return "Hello";
+   }
+   return "Hello, $name";
+}
+
+// $greeting = greet();
+// echo $greeting;
+
+// -----------------------------------------------------------
+
+// function answerYesNo($question)
+// {
+//    $userInput = readline($question);
+//    while ($userInput !== "y" || $userInput !== "n") {
+//       $userInput = readline($question);
+//       if ($userInput === 'y') {
+//          return true;
+//       } elseif ($userInput === 'n') {
+//          return false;
+//       }
+//    };
+// }
+
+//! RefactOr :
+
+function answerYesNo(string $question):bool
+{
+   while (true) {
+      $userInput = readline($question);
+      switch ($userInput) {
+         case 'y':
+            return true;
+         case 'n':
+            return false;
+         default:
+            echo "please enter y or n \n";
+            break;
+      }
+   }
+}
+
+// $answer = answerYesNo("tu veux ? ");
+// echo $answer ? "yes" : "no";
+
+// ----------------------------------------------------
+
+$intervals = [];
+
+function askTimeInterval(string $question = "what is your interval ? "): array
+{
+   echo $question . "\n";
+   while (true) {
+      $opening = (int)readline("opening time: \n");
+      if ($opening < 0 || $opening > 23) {
+         echo "opening time must be between 0 and 23 \n";
+      } else {
+         break;
+      }
+   }
+   while (true) {
+      $closing = (int)readline("closing time : \n");
+      if ($closing < 0 || $closing > 23) {
+         echo "closing time must be between 0 and 23 \n";
+      } elseif ($closing < $opening) {
+         echo "closing time must be after opening time \n";
+      } else {
+         break;
+      }
+   }
+   return [$opening, $closing];
+};
+
+
+// $interval = askTimeInterval();
+// print_r($interval);
+
+// ----------------------------------------------------------
+
+function askManyIntervals(): array
+{
+   $intervals = [];
+   $continue = true;
+   while ($continue) {
+      $intervals[] = askTimeInterval();
+      $continue = answerYesNo("do you want to add another interval ? ");
+   }
+   return $intervals;
+}
+
+//  $intervals = askManyIntervals("enter your intervals");
+//  print_r($intervals);
