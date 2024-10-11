@@ -1,15 +1,16 @@
 <?php
+$title = "Accueil";
+$nav = 'index';
+
 require 'header.php';
 ?>
 
-<div class="container">
+<main class="container m-3">
 
-    <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-    </div>
-
-</div><!-- /.container -->
+<?php 
+var_dump($_SERVER);
+?>
+</main>
 
 <?php
 require 'footer.php';
