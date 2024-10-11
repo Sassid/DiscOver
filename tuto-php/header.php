@@ -1,3 +1,18 @@
+<?php
+
+function nav_item(string $link, string $title): string
+{
+    $class = 'nav-link text-white';
+    if ($_SERVER['SCRIPT_NAME'] === $link) {
+        $class .= ' active fw-bold';
+    }
+    return <<<HTML
+<a class="$class" href="$link">$title</a> 
+HTML;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,11 +37,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link <?php if ($nav === 'index'): ?> active fw-bold <?php endif; ?> text-white" aria-current="page" href="/index.php">Accueil</a>
+                            <?= nav_item('/index.php', 'Accueil') ?>
+                            <!-- <a class="nav-link <?php if ($_SERVER['SCRIPT_NAME'] === '/index.php'): ?> active fw-bold <?php endif; ?> text-white" aria-current="page" href="/index.php">Accueil</a> -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if ($nav === 'contact'): ?> active fw-bold <?php endif;?> text-white" href="/contact.php">Contact</a>
+                            <?= nav_item('/contact.php', 'Contact') ?>
+                            <!-- <a class="nav-link <?php if ($_SERVER['SCRIPT_NAME'] === '/contact.php'): ?> active fw-bold <?php endif; ?> text-white" href="/contact.php">Contact</a> -->
                         </li>
+                        <li class="nav-item">
+                        <?= nav_item('/blog.php', 'Blog') ?>
+
+                        </li>
+
                     </ul>
                 </div>
             </div>

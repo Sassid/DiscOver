@@ -1,14 +1,16 @@
 <?php
-$title = "Accueil";
-// $nav = 'index';
+$title = 'Blog';
 
 require 'header.php';
+
 ?>
 
 <main class="container m-3">
 
+    <h2>Bla bla bla</h2>
+
 </main>
 
 <?php
-require 'footer.php';
-?>
+require 'footer.php'
+ ?>
