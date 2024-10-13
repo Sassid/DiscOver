@@ -1,15 +1,7 @@
 <?php
 
-function nav_item(string $link, string $title): string
-{
-    $class = 'nav-link text-white';
-    if ($_SERVER['SCRIPT_NAME'] === $link) {
-        $class .= ' active fw-bold';
-    }
-    return <<<HTML
-<a class="$class" href="$link">$title</a> 
-HTML;
-}
+require_once 'functions.php';
+
 
 ?>
 
@@ -36,19 +28,7 @@ HTML;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <?= nav_item('/index.php', 'Accueil') ?>
-                            <!-- <a class="nav-link <?php if ($_SERVER['SCRIPT_NAME'] === '/index.php'): ?> active fw-bold <?php endif; ?> text-white" aria-current="page" href="/index.php">Accueil</a> -->
-                        </li>
-                        <li class="nav-item">
-                            <?= nav_item('/contact.php', 'Contact') ?>
-                            <!-- <a class="nav-link <?php if ($_SERVER['SCRIPT_NAME'] === '/contact.php'): ?> active fw-bold <?php endif; ?> text-white" href="/contact.php">Contact</a> -->
-                        </li>
-                        <li class="nav-item">
-                        <?= nav_item('/blog.php', 'Blog') ?>
-
-                        </li>
-
+                        <?php require 'menu.php' ?>
                     </ul>
                 </div>
             </div>

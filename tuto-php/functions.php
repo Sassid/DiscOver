@@ -2,8 +2,8 @@
 
 function calculateAverage($array)
 {
-    $average = round(array_sum($array) / count($array), 1);
-    echo "the average is $average \n";
+   $average = round(array_sum($array) / count($array), 1);
+   echo "the average is $average \n";
 }
 
 function filterPhrases($phrase, &$count): int
@@ -45,7 +45,7 @@ function greet(?string $name = null): string
    return "Hello, $name";
 }
 
-function answerYesNo(string $question):bool
+function answerYesNo(string $question): bool
 {
    while (true) {
       $userInput = readline($question);
@@ -95,7 +95,27 @@ function askManyIntervals(): array
    return $intervals;
 }
 
+function nav_item(string $link, string $title): string
+{
+   $class = 'nav-link text-white';
+   if ($_SERVER['SCRIPT_NAME'] === $link) {
+      $class .= ' active fw-bold';
+   }
+   return <<<HTML
+   <li class="nav-item">
+      <a class="$class" href="$link">$title</a>
+   </li>
+HTML;
+}
 
-
-
-?>
+function addChecked(string $value): string
+{
+   if (isset($_GET['parfums'])) {
+      foreach ($_GET['parfums'] as $parfum) {
+         if ($parfum === $value) {
+            return "checked";
+         }
+      }
+   }
+   return "";
+}
