@@ -141,3 +141,10 @@ function radio(string $name, string $value, array $data): string
    <input type="radio" name="$name" value="$value" class="form-check-input" id="$value" $attributes>
 HTML;
 }
+
+function dump($variable)
+{
+   echo "<pre>";
+   var_dump($variable);
+   echo   "</pre>";
+}
