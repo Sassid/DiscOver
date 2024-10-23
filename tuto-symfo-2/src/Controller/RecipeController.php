@@ -8,14 +8,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 
-#[Route(path: '/recette', name: 'recipe.')]
+#[Route(path: '/recettes', name: 'recipes.')]
 class RecipeController extends AbstractController
 {
 
     #[Route(path: '/', name: 'index')]
     public function index(): Response
     {
-        return new Response('Our recipes :');
+        return $this->render('recipes/index.html.twig');
     }
 
     #[Route(path: '/{slug}-{id}', name: 'show', requirements: [
@@ -28,6 +28,10 @@ class RecipeController extends AbstractController
         // dd($request->get('slug'), $request->get('id'));
         // dd($slug, $id);
 
-        return new Response("Recette : $slug");
+        // return new Response("Recette : $slug");
+        return $this->render('recipes/show.html.twig', [
+            'id' => $id,
+            'slug' => $slug
+        ]);
     }
 }

@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+{{parent()}} #{{id}} {{slug}}
+{% endblock %}
+
+{% block body %}
+{{slug | upper}}
+{% endblock %}

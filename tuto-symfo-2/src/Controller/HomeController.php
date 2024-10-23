@@ -12,8 +12,10 @@ class HomeController extends AbstractController
     #[Route(path: '/', name: 'home')]
   public function index(Request $request): Response
    {
-    $request->query->get('name');
-    dump($request);
-    return new Response('Hello World !');
+    // $request->query->get('name');
+    // dump($request);
+    // return new Response('Hello World !');
+
+    return $this->render('home/index.html.twig');
    }
 }
