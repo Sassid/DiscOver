@@ -7,6 +7,8 @@
 {% block body %}
 	<h2>Our Recipes :</h2>
 	<ul>
-		<li><a href={{path("recipes.show", {id: 55, slug: "pates-bolognaise"})}}>Pâtes Bolognaise</a></li>
+	{% for recipe in recipes %}
+		<li><a href={{path('recipes.show', {id: recipe.id, slug: recipe.slug})}}>{{recipe.title}}</a></li>
+	{% endfor %}
 	</ul>
 {% endblock %}

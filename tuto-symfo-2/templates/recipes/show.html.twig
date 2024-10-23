@@ -1,9 +1,13 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-{{parent()}} #{{id}} {{slug}}
+{{parent()}} {{recipe.title}}
 {% endblock %}
 
 {% block body %}
-{{slug | upper}}
+<div class="container">
+<h1>{{recipe.title}}</h1>
+<h2>{{recipe.description}}</h2>
+<p>{{recipe.content | nl2br}}</p>
+</div>
 {% endblock %}
